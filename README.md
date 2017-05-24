@@ -1,19 +1,16 @@
 # Jiffex
 
-**TODO: Add description**
+Small hex that uses :jiffy (see [davisp/jiffy](https://github.com/davisp/jiffy)) to decode and encode JSON data. Can be used with phoenix ([phoenixframework/phoenix](https://github.com/phoenixframework/phoenix)).
+
+```elixir
+config :phoenix, :format_encoders,
+  json: Jiffex
+```
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `jiffex` to your list of dependencies in `mix.exs`:
-
 ```elixir
 def deps do
-  [{:jiffex, "~> 0.1.0"}]
+  [{:jiffex, github: "pressrelations/jiffex"}]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/jiffex](https://hexdocs.pm/jiffex).
-
