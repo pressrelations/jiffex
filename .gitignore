@@ -6,5 +6,3 @@
 /.fetch
 erl_crash.dump
 *.ez
-Dockerfile
-docker-compose.yml
