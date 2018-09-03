@@ -4,11 +4,11 @@ defmodule Jiffex.Mixfile do
   def project do
     [
       app: :jiffex,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      preferred_cli_env: ["espec": :test],
+      preferred_cli_env: [espec: :test],
       deps: deps()
     ]
   end
