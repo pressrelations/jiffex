@@ -1,15 +1,15 @@
 defmodule Jiffex do
-  def decode!(string, opts \\ []) do
+  def decode!(string, _opts \\ []) do
     :jiffy.decode(string, [:use_nil, :return_maps])
   end
 
-  def encode!(var, opts \\ []) do
+  def encode!(var, _opts \\ []) do
     var
     |> remove_struct_keys
     |> :jiffy.encode([:use_nil])
   end
 
-  def encode_to_iodata!(var, opts \\ []), do: encode!(var)
+  def encode_to_iodata!(var, _opts \\ []), do: encode!(var)
 
   defp remove_struct_keys(var) when is_map(var) do
     Map.drop(var, [:__struct__])
