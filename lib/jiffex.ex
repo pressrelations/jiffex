@@ -1,7 +1,8 @@
 defmodule Jiffex do
   def decode(string, opts \\ []) do
     try do
-      decode!(string, opts)
+      result = decode!(string, opts)
+      {:ok, result}
     rescue
       e in Jiffex.Error ->
         {:error, e.message}
@@ -19,7 +20,8 @@ defmodule Jiffex do
 
   def encode(var, opts \\ []) do
     try do
-      encode!(var, opts)
+      result = encode!(var, opts)
+      {:ok, result}
     rescue
       e in Jiffex.Error ->
         {:error, e.message}
