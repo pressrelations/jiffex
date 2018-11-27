@@ -1,4 +1,4 @@
-FROM dory.pressrelations.de:5000/base-elixir-1.4:1.4.2-2
+FROM dory.pressrelations.de:5000/base-elixir-1.6:1.6.3-1
 
 RUN mix local.hex --force && \
 	mix local.rebar --force && \
@@ -9,7 +9,8 @@ WORKDIR /app
 COPY mix.* ./
 RUN mix deps.get && \
 	mix deps.compile && \
-	mix compile
+	mix compile && \
+	MIX_ENV=test mix compile
 
 COPY lib ./lib
 COPY spec ./spec

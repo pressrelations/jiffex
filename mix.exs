@@ -4,12 +4,14 @@ defmodule Jiffex.Mixfile do
   def project do
     [
       app: :jiffex,
-      version: "0.2.1",
-      elixir: "~> 1.4",
+      version: "0.2.2",
+      elixir: "~> 1.5",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       preferred_cli_env: [espec: :test],
-      deps: deps()
+      deps: deps(),
+      deps_path: System.get_env("ELIXIR_DEPS_PATH") || "deps",
+      build_path: System.get_env("ELIXIR_BUILD_PATH") || "_build"
     ]
   end
 
