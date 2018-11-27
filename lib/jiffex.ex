@@ -43,13 +43,15 @@ defmodule Jiffex do
 
   defp remove_special_keys(var) when is_map(var) do
     Map.drop(var, [:__struct__, :__meta__])
-    |> Enum.map(fn {k,v} ->
+    |> Enum.map(fn {k, v} ->
       {k, remove_special_keys(v)}
     end)
     |> Enum.into(%{})
   end
+
   defp remove_special_keys(var) when is_list(var) do
     Enum.map(var, fn v -> remove_special_keys(v) end)
   end
+
   defp remove_special_keys(var), do: var
 end

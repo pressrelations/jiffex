@@ -51,13 +51,14 @@ defmodule JiffexSpec do
     it "should decode encoded data" do
       data = "{\"x\":[\"foo\"],\"foo\":\"bar\",\"bar\":null}"
 
-      expect(described_module().decode!(data)) |> to(eq(
-        %{
+      expect(described_module().decode!(data))
+      |> to(
+        eq(%{
           "foo" => "bar",
           "bar" => nil,
           "x" => ["foo"]
-        }
-      ))
+        })
+      )
     end
   end
 end
