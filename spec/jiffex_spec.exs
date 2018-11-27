@@ -28,6 +28,23 @@ defmodule JiffexSpec do
 
       expect(described_module().encode!(data)) |> to(eq("{\"x\":[{}],\"foo\":\"bar\",\"bar\":{}}"))
     end
+
+    it "should remove __meta__ keys" do
+      data = %{
+        foo: "bar",
+        __meta__: 1,
+        bar: %{
+          __meta__: 1
+        },
+        x: [
+          %{
+            __meta__: 1
+          }
+        ]
+      }
+
+      expect(described_module().encode!(data)) |> to(eq("{\"x\":[{}],\"foo\":\"bar\",\"bar\":{}}"))
+    end
   end
 
   describe ".decode!" do

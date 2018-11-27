@@ -31,7 +31,7 @@ defmodule Jiffex do
   def encode!(var, _opts \\ []) do
     try do
       var
-      |> remove_struct_keys
+      |> remove_special_keys()
       |> :jiffy.encode([:use_nil])
     catch
       {:error, reason} ->
@@ -41,15 +41,15 @@ defmodule Jiffex do
 
   def encode_to_iodata!(var, _opts \\ []), do: encode!(var)
 
-  defp remove_struct_keys(var) when is_map(var) do
-    Map.drop(var, [:__struct__])
+  defp remove_special_keys(var) when is_map(var) do
+    Map.drop(var, [:__struct__, :__meta__])
     |> Enum.map(fn {k,v} ->
-      {k, remove_struct_keys(v)}
+      {k, remove_special_keys(v)}
     end)
     |> Enum.into(%{})
   end
-  defp remove_struct_keys(var) when is_list(var) do
-    Enum.map(var, fn v -> remove_struct_keys(v) end)
+  defp remove_special_keys(var) when is_list(var) do
+    Enum.map(var, fn v -> remove_special_keys(v) end)
   end
-  defp remove_struct_keys(var), do: var
+  defp remove_special_keys(var), do: var
 end
