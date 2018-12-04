@@ -42,7 +42,10 @@ defmodule Jiffex do
   def encode_to_iodata!(var, _opts \\ []), do: encode!(var)
 
   defp remove_special_keys(var) when is_map(var) do
-    Map.drop(var, [:__struct__, :__meta__])
+    # __struct__ is used by all structs
+    # __meta__ is used by Ecto
+    # _id is set by params hex
+    Map.drop(var, [:__struct__, :__meta__, :_id])
     |> Enum.map(fn {k, v} ->
       {k, remove_special_keys(v)}
     end)
