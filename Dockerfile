@@ -1,4 +1,4 @@
-FROM dory.pressrelations.de:5000/base-elixir-1.6:1.6.3-1
+FROM 589401011586.dkr.ecr.eu-central-1.amazonaws.com/base-elixir-1.6:1.6.3-1
 
 RUN mix local.hex --force && \
 	mix local.rebar --force && \
