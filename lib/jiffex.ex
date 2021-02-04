@@ -33,6 +33,7 @@ defmodule Jiffex do
       var
       |> remove_special_keys()
       |> :jiffy.encode([:use_nil])
+      |> :erlang.iolist_to_binary()
     catch
       {:error, reason} ->
         raise Jiffex.Error, "Encode failed with reason '#{inspect(reason)}'"
