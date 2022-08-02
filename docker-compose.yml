@@ -1,8 +1,9 @@
-app:
-  build: .
-  environment:
-    DISPLAY: :0.0
-  command: sleep 100000000000 # hack to keep container running in the background
-  volumes:
-    - .:/app
-    - /tmp/.X11-unix/X0:/tmp/.X11-unix/X0
+services:
+  app:
+    build: .
+    environment:
+      DISPLAY: :0.0
+    command: sleep 100000000000 # hack to keep container running in the background
+    volumes:
+      - .:/app
+      - /tmp/.X11-unix/X0:/tmp/.X11-unix/X0
